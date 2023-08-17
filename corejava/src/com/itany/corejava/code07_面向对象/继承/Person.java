@@ -72,8 +72,7 @@ class WoMan extends Person {
 
 // 使用Cat继承Person,在语法上没有问题,但是两者没有逻辑关系
 // 因此在实际开发中不建议出现
-class Cat extends Person {
-}
+// class Cat extends Person {}
 
 class Son extends Man {
 
