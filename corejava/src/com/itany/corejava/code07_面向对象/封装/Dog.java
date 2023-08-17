@@ -1,5 +1,7 @@
 package com.itany.corejava.code07_面向对象.封装;
 
+import com.itany.corejava.code07_面向对象.继承.Animate;
+
 /**
  * @author 石小俊
  * @date 2023年08月17日 15:24
