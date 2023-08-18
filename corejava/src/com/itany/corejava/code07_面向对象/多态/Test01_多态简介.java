@@ -15,7 +15,7 @@ public class Test01_多态简介 {
         // 此时的Person是编译时类型,Man是运行时类型
         // Person属于Man的父类
         // 当编译时类型属于运行时类型的父类时,这种场景称之为向上转型,会进行自动类型转换
-        Person person = new Man("admin",18,9000.0);
+        Person person = new Man("admin", 18, 9000.0);
         System.out.println(person);
         person.show();
 
@@ -24,9 +24,27 @@ public class Test01_多态简介 {
         // person.work();
         // 如果想要调用子类独有的方法,必须以子类的类型去执行
         // 即:需要将其转换成子类去执行
-        Man man = (Man) person;
-        man.work();
+        if (person instanceof Man) {
+            System.out.println("将person转换成了Man");
+            Man man = (Man) person;
+            man.work();
+        }
 
+
+        // 此时的person实际类型是Man
+        // Man无法转换成WoMan,抛出异常
+        // WoMan woMan = (WoMan) person;
+
+        // 重新为person赋值,此时赋值为WoMan可以转换
+        person = new WoMan("alice", 20, 99);
+
+        // 向下转型时,转换前需要先进行判断是否可以转换
+        // 通过instanceof关键字进行类型判断
+        if (person instanceof WoMan) {
+            System.out.println("将person转换成了WoMan");
+            WoMan woMan = (WoMan) person;
+            woMan.shopping();
+        }
     }
 
 }
@@ -98,7 +116,7 @@ class WoMan extends Person {
         System.out.println("我是一个女人,我的姓名:" + getName() + ",年龄:" + getAge() + ",颜值:" + appearance);
     }
 
-    public void shopping(){
+    public void shopping() {
         System.out.println("我是一个女人,负责貌美如花,没事逛逛街,购购物");
     }
 
