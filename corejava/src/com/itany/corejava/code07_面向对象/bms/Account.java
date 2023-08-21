@@ -6,6 +6,11 @@ package com.itany.corejava.code07_面向对象.bms;
  * 账户类 抽象类
  */
 public abstract class Account {
+
+    // 定义一个初始的账户卡号值
+    // 要求所有账户共用该变量,因此设置为静态变量
+    private static int currentId = 1000;
+
     private int id;
     private String name;
     private String password;
@@ -26,6 +31,7 @@ public abstract class Account {
     public Account() {
         // 自动生成。初始值1000,每次新开户的卡号自增1。例如:1000、1001、1002...
         // 在构造方法中去生成账户编号
+        this.id = currentId++;
     }
 
     public int getId() {
