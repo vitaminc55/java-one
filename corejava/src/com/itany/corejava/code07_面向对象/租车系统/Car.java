@@ -5,6 +5,9 @@ package com.itany.corejava.code07_面向对象.租车系统;
  * @date 2023年08月21日 9:19
  */
 public class Car extends MotorVehicle {
+    /**
+     * @see CarConstant
+     */
     private String type; // 型号
 
     /**

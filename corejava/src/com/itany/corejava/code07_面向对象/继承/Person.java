@@ -122,7 +122,7 @@ class TestPerson {
 
         System.out.println("******************************");
 
-        // 当一个类没有继承任何类的时候, 默认继承java.lang.Object
+        // 当一个类没有继承任何类的时候, 默认继承java.lang.object
         SomeClass sc = new SomeClass();
         System.out.println(sc.hashCode());
         System.out.println(sc.getClass());

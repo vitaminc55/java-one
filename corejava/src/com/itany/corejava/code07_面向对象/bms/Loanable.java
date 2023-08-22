@@ -3,6 +3,7 @@ package com.itany.corejava.code07_面向对象.bms;
 /**
  * @author 石小俊
  * @date 2023年08月21日 13:35
+ * @version 1.0
  * 贷款接口
  */
 public interface Loanable {
