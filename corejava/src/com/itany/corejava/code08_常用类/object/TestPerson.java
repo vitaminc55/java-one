@@ -7,10 +7,33 @@ package com.itany.corejava.code08_常用类.object;
 public class TestPerson {
     public static void main(String[] args) {
 //        getClassTest();
-        equalsTest();
+//        equalsTest();
+//        hashCodeTest();
+        toStringTest();
     }
 
-    public static void equalsTest(){
+    public static void toStringTest(){
+        Person person = new Person("admin", 18);
+        System.out.println(person);
+        System.out.println(person.hashCode());
+        System.out.println(person.getClass());
+    }
+
+    public static void hashCodeTest() {
+        Person person = new Person("admin", 18);
+        Person person2 = new Person("admin", 18);
+        Person person3 = new Person("admin", 20);
+        System.out.println(person.hashCode());
+        System.out.println(person.hashCode());
+        System.out.println(person.hashCode());
+        System.out.println(person.hashCode());
+        System.out.println(person == person2);
+        System.out.println(person.equals(person2));
+        System.out.println(person2.hashCode());
+        System.out.println(person3.hashCode());
+    }
+
+    public static void equalsTest() {
         Person person = new Person("admin", 18);
         Person person2 = new Person("admin", 18);
         System.out.println(person == person2); // false

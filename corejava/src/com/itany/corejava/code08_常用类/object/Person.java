@@ -23,7 +23,20 @@ public class Person {
     public int hashCode() {
         return Objects.hash(name, age);
     }
-//    /**
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+//    @Override
+//    public String toString() {
+//        return "Person{name=" + name + ",age=" + age + "}";
+//    }
+
+    //    /**
 //     * 重写equals方法,用于比较Person对象的name属性值与age属性值是否相等
 //     * 如果比较的是Person中的name属性值与age属性值,那么比较的方法的参数必须是Person类型
 //     * 如果类型不同,直接返回false即可
