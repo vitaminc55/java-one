@@ -5,11 +5,44 @@ package com.itany.corejava.code08_常用类.object;
  * @date 2023年08月22日 14:44
  */
 public class TestPerson {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 //        getClassTest();
 //        equalsTest();
 //        hashCodeTest();
-        toStringTest();
+//        toStringTest();
+//        cloneTest();
+        finalizeTest();
+    }
+
+    public static void finalizeTest(){
+        Person person = new Person();
+        Person person2 = person;
+        person = null;
+        person2 = null;
+        Runtime.getRuntime().gc();
+    }
+
+    public static void cloneTest() throws CloneNotSupportedException {
+        Address address = new Address("江苏","南京");
+        Person person = new Person("admin", 18,address);
+        Person person2 = (Person) person.clone();
+        System.out.println(person);
+        System.out.println(person2);
+        System.out.println(person == person2); // false
+
+        // 克隆方法属于浅克隆
+        // 在克隆时,对于对象的属性值,只克隆第一层
+        // 如果对象中存在对象属性,属性值是通过引用传递进行赋值的
+        // 克隆前的对象属性的值与克隆后的对象属性的值指向的是同一个地址
+        // 因此,一旦其中任意一个发生变化,另一个也随之改变
+        // 进行修改操作
+        person2.setName("alice");
+        person2.setAge(20);
+        person2.getAddress().setProvince("浙江");
+        person.getAddress().setCity("杭州");
+        System.out.println("***************修改后的数据***************");
+        System.out.println(person);
+        System.out.println(person2);
     }
 
     public static void toStringTest(){

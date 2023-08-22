@@ -6,9 +6,35 @@ import java.util.Objects;
  * @author 石小俊
  * @date 2023年08月22日 14:42
  */
-public class Person {
+public class Person implements Cloneable{
     private String name;
     private int age;
+    private Address address;
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("正在回收垃圾");
+        super.finalize();
+    }
+
+    public Person(String name, int age, Address address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -29,6 +55,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", address=" + address +
                 '}';
     }
 //    @Override
