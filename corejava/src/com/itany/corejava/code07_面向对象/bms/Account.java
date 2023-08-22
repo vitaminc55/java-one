@@ -23,7 +23,7 @@ public abstract class Account {
      * @param money
      */
     public final void deposit(double money){
-
+        this.balance += money;
     }
 
     public abstract boolean withdrawMoney(double money);

@@ -49,6 +49,24 @@ public class Bank {
         return null;
     }
 
+    /**
+     * 根据账户的卡号查询账户信息
+     * @param id    账户卡号
+     * @return      返回查询到的账户,如果没有查询到直接返回null
+     */
+    public static Account findById(int id){
+        // 遍历所有已开户的账户信息
+        for(int i = 0; i < count; i++){
+            // 取出当前遍历的账户信息
+            Account account = accounts[i];
+            // 根据id进行判断
+            if(account.getId() == id){
+                return account;
+            }
+        }
+        return null;
+    }
+
     public static Account[] getAccounts() {
         return accounts;
     }

@@ -20,6 +20,12 @@ public class CreditAccount extends Account {
     @Override
     public boolean withdrawMoney(double money) {
         // 当账户余额+可透支额度 >= 需要取款的金额时,取款才能成功
+        if(getBalance() + limit >= money){
+            // 取款成功后,账户余额减少
+            // 由于是信用账户,余额可以为负数
+            setBalance(getBalance() - money);
+            return true;
+        }
         return false;
     }
 }

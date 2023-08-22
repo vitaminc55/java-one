@@ -9,7 +9,11 @@ public class SavingAccount extends Account {
     @Override
     public boolean withdrawMoney(double money) {
         // 当账户余额 >= 需要取款的金额时,取款才能成功
-        // 取款成功之后,账户余额随之减少
+        if(super.getBalance() >= money){
+            // 取款成功之后,账户余额随之减少
+            setBalance(getBalance() - money);
+            return true;
+        }
         return false;
     }
 }
