@@ -28,11 +28,11 @@ public class Test02_常用方法 {
         // 将date3修改为date后一天的日期
         date3.setTime(date.getTime() + 24 * 60 * 60 * 1000);
         // 此时时间先后顺序:date2->date->date3
-        System.out.println("date是否在date2之后:"+date.after(date2));
-        System.out.println("date是否在date3之后:"+date.after(date3));
+        System.out.println("date是否在date2之后:" + date.after(date2));
+        System.out.println("date是否在date3之后:" + date.after(date3));
 
-        System.out.println("date是否在date2之前:"+date.before(date2));
-        System.out.println("date是否在date3之前:"+date.before(date3));
+        System.out.println("date是否在date2之前:" + date.before(date2));
+        System.out.println("date是否在date3之前:" + date.before(date3));
 
         System.out.println(date.compareTo(date2));
         System.out.println(date.compareTo(date));
