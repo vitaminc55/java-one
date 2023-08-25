@@ -103,4 +103,24 @@ public class DateUtil {
         // 其值与下标正好重合
         return Integer.parseInt(arr[field]);
     }
+
+    /**
+     * 根据指定年份与月份获取这个月共有多少天
+     * @param year
+     * @param month
+     * @return
+     */
+    public static int getDay(int year, int month){
+        return 0;
+    }
+
+    /**
+     * 根据指定年份与月份获取这个月共有多少天
+     * @param year
+     * @param month
+     * @return
+     */
+    public static int getDay2(int year, int month){
+        return 0;
+    }
 }
