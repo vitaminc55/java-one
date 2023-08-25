@@ -32,14 +32,14 @@ public class Test02_Math类 {
         System.out.println(Math.ceil(5.67));    // 6
         System.out.println(Math.ceil(-5.67));   // -5
 
-        System.out.println(Math.pow(200,3));    // 800W.0
-        System.out.println(Math.pow(-2,2));    // 4
-        System.out.println(Math.pow(2,-2));    // 1/4
-        System.out.println(Math.pow(0,2));     // 0
-        System.out.println(Math.pow(-2,0));    // 1
+        System.out.println(Math.pow(200, 3));    // 800W.0
+        System.out.println(Math.pow(-2, 2));    // 4
+        System.out.println(Math.pow(2, -2));    // 1/4
+        System.out.println(Math.pow(0, 2));     // 0
+        System.out.println(Math.pow(-2, 0));    // 1
 
-        System.out.println(Math.max(3.14,3.15));
-        System.out.println(Math.min(3.14,3.15));
+        System.out.println(Math.max(3.14, 3.15));
+        System.out.println(Math.min(3.14, 3.15));
 
         System.out.println(Math.sqrt(400));
         System.out.println(Math.sqrt(2));
