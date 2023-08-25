@@ -31,6 +31,7 @@ public class QuestionUtil {
         students.add("陈鑫宇");
         students.add("薛圣杰");
         students.add("田宁川");
+        students.add("殷自强");
         System.out.println(students.get(new Random().nextInt(students.size())));
 
     }

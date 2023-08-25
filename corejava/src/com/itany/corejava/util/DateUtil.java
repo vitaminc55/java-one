@@ -1,5 +1,7 @@
 package com.itany.corejava.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -16,7 +18,7 @@ public class DateUtil {
      * @return
      */
     public static String toString(Date date, String pattern) {
-        return null;
+        return new SimpleDateFormat(pattern).format(date);
     }
 
 
@@ -28,7 +30,7 @@ public class DateUtil {
      * @see DateConstant
      */
     public static String toString(Date date) {
-        return null;
+        return toString(date, DateConstant.DATE_DEFAULT_PATTERN);
     }
 
     /**
@@ -37,8 +39,8 @@ public class DateUtil {
      * @param pattern 指定字符串的格式
      * @return
      */
-    public static Date toDate(String s, String pattern) {
-        return null;
+    public static Date toDate(String s, String pattern) throws ParseException {
+        return new SimpleDateFormat(pattern).parse(s);
     }
 
     /**
@@ -47,8 +49,8 @@ public class DateUtil {
      * @return
      * @see DateConstant
      */
-    public static Date toDate(String s) {
-        return null;
+    public static Date toDate(String s) throws ParseException {
+        return toDate(s, DateConstant.DATE_DEFAULT_PATTERN);
     }
 
     /**
@@ -57,7 +59,7 @@ public class DateUtil {
      * @return
      */
     public static Date getYesterday(Date date) {
-        return null;
+        return new Date(date.getTime() - DateConstant.ONE_DAY_MILLISECOND);
     }
 
     /**
@@ -66,7 +68,7 @@ public class DateUtil {
      * @return
      */
     public static Date getTomorrow(Date date) {
-        return null;
+        return new Date(date.getTime() + DateConstant.ONE_DAY_MILLISECOND);
     }
 
     /**
@@ -76,7 +78,11 @@ public class DateUtil {
      * @return
      */
     public static int getDuringDay(Date startDay, Date endDate) {
-        return 0;
+        // 计算两个日期之间相差的毫秒数
+        long time = endDate.getTime() - startDay.getTime();
+        // 通过该毫秒数除以一天的毫秒数,不满一天的不算一天,直接截取掉
+        int day = (int) (time / DateConstant.ONE_DAY_MILLISECOND);
+        return day;
     }
 
     /**
@@ -86,6 +92,15 @@ public class DateUtil {
      * @return
      */
     public static int get(Date date, int field) {
-        return 0;
+        // 将一个日期转换成默认格式的字符串
+        String s = toString(date);
+        // 当前字符串格式为:yyyy-MM-dd HH:mm:ss
+        // 可以对日期字符串进行分割,将年月日时分秒的值存储到一个数组中
+        String[] arr = s.split("[-\\s:]");
+        // 此时数组中存储的即为日期各个部分的值
+        // 对于参数field是通过常量定义的
+        // 而常量的值我们是按照顺序从0开始定义的
+        // 其值与下标正好重合
+        return Integer.parseInt(arr[field]);
     }
 }

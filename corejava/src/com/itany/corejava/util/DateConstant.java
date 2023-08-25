@@ -3,6 +3,7 @@ package com.itany.corejava.util;
 /**
  * @author 石小俊
  * @date 2023年08月24日 16:54
+ * 日期工具类常量
  */
 public interface DateConstant {
 
@@ -10,6 +11,11 @@ public interface DateConstant {
      * 日期默认格式
      */
     String DATE_DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 一天的毫秒数
+     */
+    int ONE_DAY_MILLISECOND = 24 * 60 * 60 * 1000;
 
     /**
      * 年份所表示的常量值
