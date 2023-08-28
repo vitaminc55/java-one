@@ -2,6 +2,7 @@ package com.itany.corejava.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -73,6 +74,7 @@ public class DateUtil {
 
     /**
      * 计算两个日期之间相差的天数
+     * 不足一天的直接去除
      * @param startDay 开始日期
      * @param endDate  结束日期
      * @return
@@ -82,6 +84,26 @@ public class DateUtil {
         long time = endDate.getTime() - startDay.getTime();
         // 通过该毫秒数除以一天的毫秒数,不满一天的不算一天,直接截取掉
         int day = (int) (time / DateConstant.ONE_DAY_MILLISECOND);
+        return day;
+    }
+
+    /**
+     * 计算两个日期之间相差的天数
+     * 不足一天的直接算一天
+     * @param startDay 开始日期
+     * @param endDay   结束日期,其值必须在开始日期之后
+     * @return
+     */
+    public static int getDuringDay2(Date startDay, Date endDay) {
+        // 定义一个用于统计相差天数的变量
+        int day = 0;
+        while (startDay.before(endDay)) {
+            // 如果startDay在endDay之前
+            // 取startDay的下一天
+            // 一直到startDay不再endDay之前
+            startDay = getTomorrow(startDay);
+            day++;
+        }
         return day;
     }
 
@@ -106,12 +128,19 @@ public class DateUtil {
 
     /**
      * 根据指定年份与月份获取这个月共有多少天
-     * @param year
-     * @param month
-     * @return
+     * 此时使用Calendar的方式进行实现
+     * @param year  指定年份
+     * @param month 指定月份
+     * @return 返回这一年这个月共有多少天
      */
-    public static int getDay(int year, int month){
-        return 0;
+    public static int getDay(int year, int month) {
+        Calendar calendar = Calendar.getInstance();
+        // 设置日期的年份
+        calendar.set(Calendar.YEAR, year);
+        // 设置日期的月份,month取值比真实月份少1
+        calendar.set(Calendar.MONTH, month - 1);
+        // 给定此日历对象对应部分字段可能拥有的最大值
+        return calendar.getActualMaximum(Calendar.DATE);
     }
 
     /**
@@ -120,7 +149,21 @@ public class DateUtil {
      * @param month
      * @return
      */
-    public static int getDay2(int year, int month){
-        return 0;
+    public static int getDay2(int year, int month) {
+        // 将日期设置为year年month月的最后一天
+        // 在这一天获取当前属于本月第几天
+        // 返回的值即为这一个这个月共有多少天
+        // 如果将日期设置为这一年这个月的最后一天?
+        // 没法直接设置,但是可以间接设置,在设置日期时,支持日期的运算的
+        // 可以设置下个月的第一天,这一天的前一天即属于这个月的最后一天
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        // 这个月的值为month-1,下一个月为month
+        calendar.set(Calendar.MONTH, month);
+        // 设置下个月的第一天,这一天的前一天即为这个月的最后一天
+        calendar.set(Calendar.DATE, 0);
+        // 在这个月的最后一天获取当前日期属于本月第几天
+        // 返回的值即为这个月共有多少天
+        return calendar.get(Calendar.DATE);
     }
 }

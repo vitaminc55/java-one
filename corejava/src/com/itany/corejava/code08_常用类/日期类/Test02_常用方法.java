@@ -32,6 +32,7 @@ public class Test02_常用方法 {
         System.out.println("date是否在date3之后:" + date.after(date3));
 
         System.out.println("date是否在date2之前:" + date.before(date2));
+        System.out.println("date是否在date之前:" + date.before(date));
         System.out.println("date是否在date3之前:" + date.before(date3));
 
         System.out.println(date.compareTo(date2));
