@@ -65,5 +65,6 @@ public class Test05_练习 {
             }
         }
         System.out.println("删除后集合数据:" + list);
+
     }
 }
