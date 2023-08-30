@@ -26,7 +26,7 @@ public class Test02_异常处理 {
             // return表示退出方法,但是在异常处理代码中,必须整个异常代码全部结束才会退出
             // 即:return之后的finally代码照常执行
             // return;
-            // 如果想要直接退出,通过System.exit(0)退出JVM
+            // 如果想要直接退出,通过System.exit(0)表示终止当前正在运行的JVM
             // 此时finally的代码不会被执行
             System.exit(0);
         } finally {
