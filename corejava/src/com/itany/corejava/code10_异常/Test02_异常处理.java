@@ -27,6 +27,7 @@ public class Test02_异常处理 {
             // 即:return之后的finally代码照常执行
             // return;
             // 如果想要直接退出,通过System.exit(0)退出JVM
+            // 此时finally的代码不会被执行
             System.exit(0);
         } finally {
             System.out.println("不管是否存在异常都会执行的代码");
