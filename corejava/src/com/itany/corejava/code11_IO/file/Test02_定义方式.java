@@ -11,7 +11,7 @@ public class Test02_定义方式 {
 
     public static void main(String[] args) throws URISyntaxException {
         // 定义方式一
-        File file = new File("E:\\itany\\a.txt");
+        File file = new File("E:\\itany\\b.txt");
         System.out.println(file.exists());
         file = new File("..\\itany\\a.txt");
         System.out.println(file.exists());
