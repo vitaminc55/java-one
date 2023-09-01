@@ -1,9 +1,6 @@
 package com.itany.corejava.code11_IO.字节流;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author 石小俊
@@ -13,7 +10,8 @@ public class Test01_文件字节输入流 {
 
     public static void main(String[] args) {
 //        test01();
-        test02();
+//        test02();
+        test03();
     }
 
     /**
@@ -118,12 +116,12 @@ public class Test01_文件字节输入流 {
 //            System.out.println(new String(b));
             // 此时直接读取时,会读取到空白字符
             int data;
-            while((data = in.read(b)) != -1){
+            while ((data = in.read(b)) != -1) {
                 // 此时读取时需要将内容后面的空白去除掉
                 // 参数一:需要转换的字节数组
                 // 参数二:从哪一个索引位置开始转换
                 // 参数三:转换多少个字节
-                System.out.println(new String(b,0,data));;
+                System.out.println(new String(b, 0, data));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -131,4 +129,30 @@ public class Test01_文件字节输入流 {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 加载字节流时路径的不同写法
+     */
+    public static void test03() {
+        try (
+                // 绝对路径
+                // FileInputStream in = new FileInputStream("E:\\itany\\a.txt");
+                // 相对路径
+                // FileInputStream in = new FileInputStream("corejava/src/a.txt");
+                // 可以直接通过其父类InputStream进行读取
+                // InputStream in = Test01_文件字节输入流.class.getClassLoader().getResourceAsStream("a.txt");
+                InputStream in = new FileInputStream("corejava/src/a.txt");
+        ) {
+            byte[] b = new byte[1024];
+            int data;
+            while ((data = in.read(b)) != -1) {
+                System.out.println(new String(b, 0, data));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
