@@ -48,8 +48,8 @@ public class Test01_文件字符流 {
         ) {
             char[] c = new char[1024];
             int data;
-            while((data = reader.read(c)) != -1){
-                writer.write(c,0,data);
+            while ((data = reader.read(c)) != -1) {
+                writer.write(c, 0, data);
             }
         } catch (IOException e) {
             e.printStackTrace();
