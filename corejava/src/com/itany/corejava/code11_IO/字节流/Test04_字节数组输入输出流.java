@@ -14,6 +14,10 @@ public class Test04_字节数组输入输出流 {
         test02();
     }
 
+    /**
+     * 字节数组输入流
+     * @throws IOException
+     */
     public static void test01() throws IOException {
         // 定义一个字节数组
         byte[] data = "Hello World".getBytes();
@@ -27,11 +31,15 @@ public class Test04_字节数组输入输出流 {
         // System.out.println((char)i);
         byte[] b = new byte[1024];
         int i;
-        while((i = in.read(b)) != -1){
-            System.out.println(new String(b,0,i));
+        while ((i = in.read(b)) != -1) {
+            System.out.println(new String(b, 0, i));
         }
     }
 
+    /**
+     * 字节数组输出流
+     * @throws IOException
+     */
     public static void test02() throws IOException {
         // 定义一个字节数组输出流
         ByteArrayOutputStream out = new ByteArrayOutputStream();
