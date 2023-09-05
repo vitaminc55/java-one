@@ -20,7 +20,7 @@ public class Test08_练习 {
     }
 }
 
-class HelloThread implements Runnable{
+class HelloThread implements Runnable {
     private Object obj;
 
     public HelloThread(Object obj) {
@@ -29,8 +29,8 @@ class HelloThread implements Runnable{
 
     @Override
     public void run() {
-        synchronized (obj){
-            for(int i = 0; i < 10; i++){
+        synchronized (obj) {
+            for (int i = 0; i < 10; i++) {
                 System.out.print("Hello");
                 obj.notifyAll();
                 try {
@@ -42,7 +42,8 @@ class HelloThread implements Runnable{
         }
     }
 }
-class WorldThread implements Runnable{
+
+class WorldThread implements Runnable {
     private Object obj;
 
     public WorldThread(Object obj) {
@@ -51,8 +52,8 @@ class WorldThread implements Runnable{
 
     @Override
     public void run() {
-        synchronized (obj){
-            for(int i = 0; i < 10; i++){
+        synchronized (obj) {
+            for (int i = 0; i < 10; i++) {
                 System.out.print("World");
                 obj.notifyAll();
                 try {
