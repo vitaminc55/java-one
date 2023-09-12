@@ -13,26 +13,159 @@ public class Test01_快速入门 {
     public static void main(String[] args) {
 //        User user = new User("jack", "111111", "13812345678", "江苏-苏州");
 //        insertUser(user);
-        List<User> users = selectAll();
-        for (User user : users) {
-            System.out.println(user);
+//        List<User> users = selectAll();
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
+
+//        User user = new User(3,"lily","222222","13912345678","江苏-泰州");
+//        updateUser(user);
+
+//        deleteById(3);
+
+        User user = selectById(1);
+        System.out.println(user);
+
+    }
+
+    public static void updateUser(User user) {
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/jdbc?useUnicode=true&characterEncoding=utf-8", "root", "");
+            st = conn.createStatement();
+            String sql = "update t_user set username = '" + user.getUsername() + "',password = '" + user.getPassword() + "',phone = '" + user.getPhone() + "',address = '" + user.getAddress() + "' where id = " + user.getId() + "";
+            int rows = st.executeUpdate(sql);
+            System.out.println("Query Ok," + rows + " rows affected");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.err.println("未找到驱动");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("数据库访问失败");
+        } finally {
+            // 6.释放资源
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.err.println("释放资源出错");
+                }
+            }
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.err.println("释放资源出错");
+                }
+            }
+        }
+
+    }
+
+    public static void deleteById(Integer id) {
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/jdbc?useUnicode=true&characterEncoding=utf-8", "root", "");
+            st = conn.createStatement();
+            String sql = "delete from t_user where id = " + id + "";
+            int rows = st.executeUpdate(sql);
+            System.out.println("Query Ok," + rows + " rows affected");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.err.println("未找到驱动");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("数据库访问失败");
+        } finally {
+            // 6.释放资源
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.err.println("释放资源出错");
+                }
+            }
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.err.println("释放资源出错");
+                }
+            }
         }
     }
 
-    public static void updateUser(User user){
+    public static User selectById(Integer id) {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        User user = null;
 
-    }
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/jdbc?useUnicode=true&characterEncoding=utf-8", "root", "");
+            st = conn.createStatement();
 
-    public static void deleteById(Integer id){
+            String sql = "select id,username,password,phone,address from t_user where id = " + id + "";
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setPhone(rs.getString("phone"));
+                user.setAddress(rs.getString("address"));
+            }
 
-    }
-
-    public static User selectById(Integer id){
-        return null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.err.println("找不到驱动");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("数据库访问失败");
+        } finally {
+            // 6.释放资源
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.err.println("释放资源出错");
+                }
+            }
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.err.println("释放资源出错");
+                }
+            }
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.err.println("释放资源出错");
+                }
+            }
+        }
+        return user;
     }
 
     /**
      * 查询所有用户信息
+     *
      * @return
      */
     public static List<User> selectAll() {
@@ -95,6 +228,7 @@ public class Test01_快速入门 {
             e.printStackTrace();
             System.err.println("数据库访问失败");
         } finally {
+            // 6.释放资源
             if (conn != null) {
                 try {
                     conn.close();
