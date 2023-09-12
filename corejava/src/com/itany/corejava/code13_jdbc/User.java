@@ -17,6 +17,17 @@ public class User implements Serializable {
     private String phone;
     private String address;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public User(Integer id, String username, String password, String phone, String address) {
         this.id = id;
         this.username = username;
