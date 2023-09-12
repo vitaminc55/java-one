@@ -28,7 +28,7 @@ public class QuestionUtil {
         students.add("王召文");
         students.add("杨天航");
         students.add("徐伟");
-        students.add("陈鑫宇");
+        // students.add("陈鑫宇");
         students.add("薛圣杰");
         students.add("田宁川");
         students.add("殷自强");
