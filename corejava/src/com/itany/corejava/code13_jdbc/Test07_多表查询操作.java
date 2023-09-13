@@ -14,10 +14,12 @@ import java.util.List;
 public class Test07_多表查询操作 {
 
     public static void main(String[] args) throws DataAccessException {
-        List<Emp> emps = selectAll();
-        for (Emp emp : emps) {
-            System.out.println(emp);
-        }
+//        List<Emp> emps = selectAll();
+//        for (Emp emp : emps) {
+//            System.out.println(emp);
+//        }
+        Dept dept = selectByDeptId(1);
+        System.out.println(dept);
     }
 
     /**
@@ -76,6 +78,66 @@ public class Test07_多表查询操作 {
         } finally {
             JDBCUtil.close(conn, ps, rs);
         }
+    }
+
+    /**
+     * 一对多
+     * 根据部门编号查询部门以及该部门下的所有员工信息
+     * @param id
+     * @return
+     */
+    public static Dept selectByDeptId(Integer id) throws DataAccessException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Dept dept = null;
+        try {
+            conn = JDBCUtil.getConnection();
+            String sql = new StringBuffer()
+                    .append(" select d.id,d.name,d.remark,e.id 'e.id',e.name 'e.name',e.salary,e.dept_id ")
+                    .append(" from t_dept d ")
+                    .append(" left join t_emp e ")
+                    .append(" on d.id = e.dept_id ")
+                    .append(" where d.id = ? ")
+                    .toString();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            // 在映射时,每一行数据映射一次
+            while (rs.next()) {
+                // 一对多映射的时候,一方数据只能映射一次,多方数据可以映射多次
+                // 如果一方也映射多次,会存在数据覆盖问题
+
+                // 一方映射
+                // 当一方数据尚未映射的时候,此时的值为null
+                // 当一方数据映射过了之后,其值不再为null
+                // 即:当一方数据值为null时进行映射
+                if (dept == null) {
+                    dept = new Dept();
+                    dept.setId(rs.getInt("id"));
+                    dept.setName(rs.getString("name"));
+                    dept.setRemark(rs.getString("remark"));
+                }
+
+                // 多方映射
+                Emp emp = new Emp();
+                emp.setId(rs.getInt("e.id"));
+                emp.setName(rs.getString("e.name"));
+                emp.setSalary(rs.getDouble("salary"));
+                emp.setDeptId(rs.getInt("dept_id"));
+
+                dept.addEmp(emp);
+            }
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+            throw e;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DataAccessException("数据访问失败");
+        } finally {
+            JDBCUtil.close(conn, ps, rs);
+        }
+        return dept;
     }
 
 }
