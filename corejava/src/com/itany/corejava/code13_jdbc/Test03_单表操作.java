@@ -158,7 +158,7 @@ public class Test03_单表操作 {
             e.printStackTrace();
             throw new DataAccessException("数据访问失败");
         } finally {
-            JDBCUtil.close(conn, ps, null);
+            JDBCUtil.close(conn, ps, rs);
         }
         return user;
     }
@@ -194,7 +194,7 @@ public class Test03_单表操作 {
             e.printStackTrace();
             throw new DataAccessException("数据访问失败");
         } finally {
-            JDBCUtil.close(conn, ps, null);
+            JDBCUtil.close(conn, ps, rs);
         }
         return users;
     }

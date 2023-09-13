@@ -32,6 +32,9 @@ public class QuestionUtil {
         students.add("薛圣杰");
         students.add("田宁川");
         students.add("殷自强");
+        students.add("彭奕龙");
+        students.add("周晋玄");
+        students.add("刘家胤");
         System.out.println(students.get(new Random().nextInt(students.size())));
 
     }
