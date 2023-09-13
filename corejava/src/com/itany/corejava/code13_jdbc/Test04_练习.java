@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author 石小俊
@@ -46,11 +47,57 @@ public class Test04_练习 {
 //        Student student7 = new Student(7,"wbs23071007","%",25);
 //        updateByNo(student7);
 
-        deleteByNo("wbs23071008");
+        // deleteByNo("wbs23071008");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("请输入查询第几页的数据:");
+        int pageNo = sc.nextInt();
+        System.out.print("请输入每页显示几条数据:");
+        int pageSize = sc.nextInt();
+        List<Student> students = selectByPage(pageNo, pageSize);
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+
+    public static List<Student> selectByPage(Integer pageNo, Integer pageSize) throws DataAccessException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Student> students = new ArrayList<>();
+        try {
+            conn = JDBCUtil.getConnection();
+            String sql = new StringBuffer()
+                    .append(" select id,no,name,age ")
+                    .append(" from t_student ")
+                    .append(" limit ?,? ")
+                    .toString();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, (pageNo - 1) * pageSize);
+            ps.setInt(2, pageSize);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Student student = new Student();
+                student.setId(rs.getInt("id"));
+                student.setNo(rs.getString("no"));
+                student.setName(rs.getString("name"));
+                student.setAge(rs.getInt("age"));
+                students.add(student);
+            }
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+            throw e;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DataAccessException("数据访问失败");
+        } finally {
+            JDBCUtil.close(conn, ps, rs);
+        }
+        return students;
     }
 
     /**
      * 添加学生信息
+     *
      * @param student
      */
     public static void insertStudent(Student student) throws DataAccessException {
@@ -84,6 +131,7 @@ public class Test04_练习 {
 
     /**
      * 根据学号删除指定学生信息
+     *
      * @param no
      */
     public static void deleteByNo(String no) throws DataAccessException {
@@ -112,6 +160,7 @@ public class Test04_练习 {
 
     /**
      * 根据学号修改指定学生信息
+     *
      * @param student
      */
     public static void updateByNo(Student student) throws DataAccessException {
@@ -145,6 +194,7 @@ public class Test04_练习 {
 
     /**
      * 查询所有学生信息
+     *
      * @return
      */
     public static List<Student> selectAll() throws DataAccessException {
@@ -182,6 +232,7 @@ public class Test04_练习 {
 
     /**
      * 根据学号查询指定学生信息
+     *
      * @param no
      * @return
      * @throws DataAccessException
@@ -222,6 +273,7 @@ public class Test04_练习 {
 
     /**
      * 根据姓名进行模糊查询
+     *
      * @param name
      * @return
      */
@@ -263,6 +315,7 @@ public class Test04_练习 {
 
     /**
      * 根据年龄范围查询指定学生信息
+     *
      * @param minAge
      * @param maxAge
      * @return
