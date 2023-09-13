@@ -9,6 +9,26 @@ public class Emp {
     private String name;
     private Double salary;
     private Integer deptId;
+    private Dept dept;
+
+    @Override
+    public String toString() {
+        return "Emp{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                ", deptId=" + deptId +
+                ", dept=" + dept +
+                '}';
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
+    }
 
     public Emp() {
     }

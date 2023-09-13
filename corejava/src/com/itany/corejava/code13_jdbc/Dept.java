@@ -11,6 +11,15 @@ public class Dept implements Serializable {
     private String name;
     private String remark;
 
+    @Override
+    public String toString() {
+        return "Dept{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
+
     public Dept() {
     }
 
