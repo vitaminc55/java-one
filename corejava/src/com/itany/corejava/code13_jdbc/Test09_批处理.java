@@ -88,7 +88,7 @@ public class Test09_批处理 {
             throw e;
         } catch (SQLException e) {
             e.printStackTrace();
-            conn.rollback();
+//            conn.rollback();
             throw new DataAccessException("数据访问失败");
         } finally {
             JDBCUtil.close(conn, ps, null);
