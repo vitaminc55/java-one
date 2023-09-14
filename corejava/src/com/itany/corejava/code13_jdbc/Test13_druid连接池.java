@@ -1,30 +1,29 @@
 package com.itany.corejava.code13_jdbc;
 
-import org.apache.commons.dbcp.BasicDataSource;
-import org.apache.commons.dbcp.BasicDataSourceFactory;
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
 /**
  * @author 石小俊
- * @date 2023年09月14日 10:28
+ * @date 2023年09月14日 11:25
  */
-public class Test12_dbcp连接池 {
+public class Test13_druid连接池 {
 
     public static void main(String[] args) throws Exception {
-//        test01();
-//        test02();
-        test03();
+        test02();
     }
 
-
     public static void test01() throws SQLException {
+        // 与commons-dbcp的区别在于连接池对象不一样
+        // Druid使用的是:DruidDataSource
+        // 其他完全一致
         // 创建连接池对象
-        BasicDataSource ds = new BasicDataSource();
+        DruidDataSource ds = new DruidDataSource();
 
         // 设置连接池中连接数据库信息
         ds.setDriverClassName("com.mysql.jdbc.Driver");
@@ -63,23 +62,14 @@ public class Test12_dbcp连接池 {
         System.out.println(conn3);
     }
 
-    public static void test02() throws IOException, SQLException {
+    public static void test02() throws Exception {
         Properties p = new Properties();
         p.load(Test12_dbcp连接池.class.getClassLoader().getResourceAsStream("dataSource.properties"));
-        System.out.println(p);
 
-        BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName(p.getProperty("driverClassName"));
-
-        ds.setUrl(p.getProperty("url"));
-        ds.setUsername(p.getProperty("username"));
-        ds.setPassword(p.getProperty("password"));
-        ds.setInitialSize(Integer.parseInt(p.getProperty("initialSize")));
-        ds.setMaxActive(Integer.parseInt(p.getProperty("maxActive")));
-        ds.setMaxIdle(Integer.parseInt(p.getProperty("maxIdle")));
-        ds.setMinIdle(Integer.parseInt(p.getProperty("minIdle")));
-        ds.setMaxWait(Integer.parseInt(p.getProperty("maxWait")));
-
+        // 与commons-dbcp的区别在于工厂类不一样
+        // Druid使用的工厂类为:DruidDataSourceFactory
+        // 其他完全一致
+        DataSource ds = DruidDataSourceFactory.createDataSource(p);
         Connection conn = ds.getConnection();
         System.out.println(conn);
         conn.close();
@@ -87,15 +77,4 @@ public class Test12_dbcp连接池 {
         System.out.println(conn2);
     }
 
-    public static void test03() throws Exception {
-        Properties p = new Properties();
-        p.load(Test12_dbcp连接池.class.getClassLoader().getResourceAsStream("dataSource.properties"));
-
-        DataSource ds = BasicDataSourceFactory.createDataSource(p);
-        Connection conn = ds.getConnection();
-        System.out.println(conn);
-        conn.close();
-        Connection conn2 = ds.getConnection();
-        System.out.println(conn2);
-    }
 }
