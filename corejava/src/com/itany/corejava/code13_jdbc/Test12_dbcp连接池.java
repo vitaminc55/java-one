@@ -57,7 +57,7 @@ public class Test12_dbcp连接池 {
         System.out.println(conn3);
     }
 
-    public static void test02(){
+    public static void test02() {
 
     }
 }
