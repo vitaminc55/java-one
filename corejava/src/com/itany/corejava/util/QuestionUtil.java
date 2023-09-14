@@ -36,6 +36,5 @@ public class QuestionUtil {
         students.add("周晋玄");
         students.add("刘家胤");
         System.out.println(students.get(new Random().nextInt(students.size())));
-
     }
 }
