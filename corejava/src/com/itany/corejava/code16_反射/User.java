@@ -1,23 +1,34 @@
 package com.itany.corejava.code16_反射;
 
+import java.io.Serializable;
+
 /**
  * @author 石小俊
  * @date 2023年09月15日 13:46
  */
-public class User {
+public class User extends Person implements Serializable {
 
-    private Integer id;
     private String username;
     private String password;
-    private String phone;
-    private String address;
 
-    public Integer getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public User() {
+    }
+
+    private User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String username) {
+        this.username = username;
     }
 
     public String getUsername() {
@@ -34,21 +45,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }
