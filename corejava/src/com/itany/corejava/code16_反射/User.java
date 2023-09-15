@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public class User extends Person implements Serializable {
 
-    private String username;
+    public String username;
     private String password;
 
     @Override
@@ -22,7 +22,7 @@ public class User extends Person implements Serializable {
     public User() {
     }
 
-    private User(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -31,19 +31,16 @@ public class User extends Person implements Serializable {
         this.username = username;
     }
 
-    public String getUsername() {
-        return username;
+    public String sayHello(){
+        return "Hello World";
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int sum(int i, int j){
+        return i + j;
     }
 
-    public String getPassword() {
-        return password;
+    private void test(){
+        System.out.println("这是private修饰的测试方法");
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

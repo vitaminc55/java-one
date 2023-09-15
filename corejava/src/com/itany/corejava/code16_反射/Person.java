@@ -6,7 +6,7 @@ package com.itany.corejava.code16_反射;
  */
 public class Person {
     private Integer id;
-    private String phone;
+    public String phone;
     private String address;
 
     public Person() {
@@ -18,27 +18,11 @@ public class Person {
         this.address = address;
     }
 
-    public Integer getId() {
-        return id;
+    public void show() {
+        System.out.println("这是Person中public修饰的方法");
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    private int add(int i, int j) {
+        return i + j;
     }
 }
