@@ -6,9 +6,18 @@ package com.itany.corejava.code16_反射;
  */
 public class Emp {
     @Value("id")
-    private Integer id;
+    private String id;
     @Value("name")
     private String name;
     @Value("salary")
-    private Double salary;
+    private String salary;
+
+    @Override
+    public String toString() {
+        return "Emp{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
