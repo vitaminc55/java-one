@@ -17,12 +17,7 @@ public class Test {
         });
         System.out.println(Arrays.toString(arr));
 
-        SortTemplate.sort(arr, new SortComparator<Integer>() {
-            @Override
-            public int compareTo(Integer t1, Integer t2) {
-                return t2 - t1;
-            }
-        });
+        SortTemplate.sort(arr, (t1, t2) -> (Integer) t2 - (Integer) t1);
         System.out.println(Arrays.toString(arr));
 
         String[] names = {"jack", "tom", "alice", "admin"};
