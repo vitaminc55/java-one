@@ -8,7 +8,7 @@ package com.itany.corejava.code17_设计模式.单例模式;
 public class SomeBean {
 
     // 1.构造方法私有化,确保外部不能创建对象
-    private SomeBean(){
+    private SomeBean() {
 
     }
 
@@ -21,7 +21,7 @@ public class SomeBean {
     // 由于创建好的实例需要向外部提供访问
     // 因此,创建一个供外部访问的方法,该方法返回内部实例化的对象
     // 由于外部无法创建对象,因此该方法必须是静态方法
-    public static SomeBean getInstance(){
+    public static SomeBean getInstance() {
         return someBean;
     }
 }
