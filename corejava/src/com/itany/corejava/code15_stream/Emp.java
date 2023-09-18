@@ -22,7 +22,6 @@ public class Emp {
         Dept d5 = new Dept(5,"安保部");
         Dept d6 = new Dept(6,"人事部");
         Dept d7 = new Dept(7,"后勤部");
-        Dept d8 = new Dept(8,"行政部");
         return Arrays.asList(
                 new Emp(1,"admin",20000.0,d1),
                 new Emp(2,"alice",10000.0,d2),
