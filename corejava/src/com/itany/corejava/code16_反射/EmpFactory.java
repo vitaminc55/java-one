@@ -61,8 +61,5 @@ public class EmpFactory {
             e.printStackTrace();
             throw new EmpCreateErrorException("Emp对象创建失败");
         }
-
-
     }
-
 }
