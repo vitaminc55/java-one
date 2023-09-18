@@ -4,6 +4,7 @@ package com.itany.corejava.code17_设计模式.单例模式;
  * @author 石小俊
  * @date 2023年09月18日 13:48
  * 饿汉模式:在类加载的时候创建实例,不管后期是否使用都进行创建
+ * 线程安全
  */
 public class SomeBean {
 
