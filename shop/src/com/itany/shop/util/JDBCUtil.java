@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * @author 石小俊
+ * @author 黄鹏程
  * @date 2023年09月19日 13:31
  * 通过配置文件的方式读取数据库连接信息
  * 创建一个线程单例的数据库连接池
@@ -27,10 +27,7 @@ public class JDBCUtil {
         Properties p = new Properties();
         try {
             p.load(JDBCUtil.class.getClassLoader().getResourceAsStream("dataSource.properties"));
-            // commons-dbcp
             ds = BasicDataSourceFactory.createDataSource(p);
-            // druid
-            // ds = DruidDataSourceFactory.createDataSource(p);
         } catch (IOException e) {
             e.printStackTrace();
             throw new ExceptionInInitializerError("JDBCUtil初始化失败");
@@ -46,20 +43,14 @@ public class JDBCUtil {
      * @return
      */
     public static Connection getConnection() {
-        // 从线程池中获取连接
-        Connection conn = local.get();
+        Connection conn=local.get();
         try {
-            // 如果没有获取到连接,说明尚未获取过
-            if (conn == null) {
-                // 从连接池中取出一个连接
-                conn = ds.getConnection();
-                // 当拿到连接之后,将连接存放到线程池中
-                // 如果下次再次使用连接,则直接可以从线程池中获取到
+            if (conn==null){
+                conn=ds.getConnection();
                 local.set(conn);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DataAccessException("获取连接失败");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return conn;
     }
