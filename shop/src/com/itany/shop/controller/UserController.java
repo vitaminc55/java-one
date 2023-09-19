@@ -1,5 +1,10 @@
 package com.itany.shop.controller;
 
+import com.itany.shop.exception.RequestParameterErrorException;
+import com.itany.shop.exception.UserExistException;
+import com.itany.shop.factory.ObjectFactory;
+import com.itany.shop.service.UserService;
+
 import java.util.Scanner;
 
 /**
@@ -8,6 +13,7 @@ import java.util.Scanner;
  */
 public class UserController {
     private Scanner sc = new Scanner(System.in);
+    private UserService userService = (UserService) ObjectFactory.getObject("userService");
 
     public static void main(String[] args) {
         new UserController().showMenu();
@@ -36,7 +42,25 @@ public class UserController {
     }
 
     public void register() {
+        System.out.print("请输入用户名:");
+        String username = sc.next();
+        System.out.print("请输入密码:");
+        String password = sc.next();
+        System.out.print("请输入电话:");
+        String phone = sc.next();
+        System.out.print("请输入地址:");
+        String address = sc.next();
 
+        try {
+            // 调用业务层方法实现注册功能
+            userService.register(username, password, phone, address);
+            System.out.println("注册成功");
+        } catch (RequestParameterErrorException e) {
+            System.out.println("注册失败,失败原因:" + e.getMessage());
+        } catch (UserExistException e) {
+            System.out.println("注册失败,失败原因:" + e.getMessage());
+        }
+        showMenu();
     }
 
     public void login() {
