@@ -2,16 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a52c0349-fcc0-499f-9bc9-64bb1dfe0040" name="Default Changelist" comment="6">
-      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/factory/ObjectFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/rowmapper/UserRowMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/proxy/UserServiceProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/tran/TransactionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/tran/impl/TransactionManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/MD5Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/ParameterUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/constant/DictConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/ItemDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/OrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/ProductDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/impl/ItemDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/impl/OrderDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/impl/ProductDaoIml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/entity/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/entity/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/exception/ProductNotExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/exception/UserNotLoginException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/rowmapper/OrderRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/rowmapper/ProductRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/impl/ProductServiceIml.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/proxy/CartServiceProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/proxy/OrderServiceProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/proxy/ProductServiceProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/KeyHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/PageInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/PreparedStatementCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/vo/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/beans.properties" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/beans.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/impl/UserDaoIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/dao/impl/UserDaoIml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/factory/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/factory/ObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/service/impl/UserServiceIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/impl/UserServiceIml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/service/proxy/UserServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/service/proxy/UserServiceProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/tran/impl/TransactionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/tran/impl/TransactionManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/util/JDBCTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/JDBCTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/util/MD5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/MD5Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/src/com/itany/shop/util/ParameterUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop/src/com/itany/shop/util/ParameterUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,27 +80,52 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.itany.shop.exception" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.itany.shop.constant" />
       <recent name="com.itany.shop.util" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration name="UserController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.itany.shop.controller.UserController" />
+      <module name="shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itany.shop.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.UserController" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -80,7 +136,8 @@
       <option name="presentableId" value="Default" />
       <updated>1695112602079</updated>
       <workItem from="1695112603740" duration="1160000" />
-      <workItem from="1695113958106" duration="8245000" />
+      <workItem from="1695113958106" duration="70288000" />
+      <workItem from="1695342769251" duration="14509000" />
     </task>
     <task id="LOCAL-00001" summary="6">
       <created>1695115736890</created>
@@ -89,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695115736891</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="6">
+      <created>1695170291326</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695170291326</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +169,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="6" />

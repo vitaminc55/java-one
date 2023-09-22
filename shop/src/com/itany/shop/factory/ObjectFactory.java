@@ -51,7 +51,7 @@ public class ObjectFactory {
     public static Object getObject(String key){
         Object obj=objs.get(key);
         if (obj==null){
-            throw  new ObjectNotFoundException("根据指定的key:\" + key + \"在配置文件中没有找到对应的配置");
+            throw  new ObjectNotFoundException("根据指定的key:" + key + "在配置文件中没有找到对应的配置");
         }
         return obj;
     }

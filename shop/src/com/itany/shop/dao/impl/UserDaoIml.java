@@ -36,4 +36,25 @@ public class UserDaoIml implements UserDao {
                 .toString();
         jdbcTemplate.update(sql,user.getUsername(),user.getPassword(),user.getPhone(),user.getAddress());
     }
+
+    @Override
+    public User selectUser(String username, String password) {
+        String sql = new StringBuffer()
+                .append(" select id,username,password,phone,address ")
+                .append(" from t_user ")
+                .append(" where username = ? and password = ? ")
+                .toString();
+        List<User> users= jdbcTemplate.query(sql,new UserRowMapper(),username,password);
+        return users.isEmpty()?null:users.get(0);
+    }
+
+    @Override
+    public void modifyPassword(String username, String password) {
+        String sql= new StringBuffer()
+                .append(" update t_user set ")
+                .append(" password= ? ")
+                .append(" where username= ? ")
+                .toString();
+        jdbcTemplate.update(sql,password,username);
+    }
 }

@@ -20,4 +20,6 @@ public interface UserDao {
      * @param user
      */
     void insertUser(User user);
+    User selectUser(String username,String password);
+    void modifyPassword(String username,String password);
 }

@@ -1,10 +1,16 @@
 package com.itany.shop.controller;
 
+import com.itany.shop.entity.Product;
+import com.itany.shop.entity.User;
 import com.itany.shop.exception.RequestParameterErrorException;
 import com.itany.shop.exception.UserExistException;
 import com.itany.shop.factory.ObjectFactory;
+import com.itany.shop.service.ProductService;
 import com.itany.shop.service.UserService;
+import com.itany.shop.util.PageInfo;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -14,6 +20,7 @@ import java.util.Scanner;
 public class UserController {
     private Scanner sc = new Scanner(System.in);
     private UserService userService= (UserService) ObjectFactory.getObject("userService");
+    private ProductService productService= (ProductService) ObjectFactory.getObject("productService");
 
     public static void main(String[] args) {
         new UserController().showMenu();
@@ -62,10 +69,57 @@ public class UserController {
     }
 
     public void login() {
-
+        System.out.print("请输入用户名:");
+        String username = sc.next();
+        System.out.print("请输入密码:");
+        String password = sc.next();
+        try {
+            User user= userService.login(username,password);
+            if (user==null){
+                throw new UserPrincipalNotFoundException("用户名或密码错误");
+            }
+            System.out.println("登录成功");
+            MainController mainController=new MainController(user);
+            mainController.showMenu();
+        } catch (RequestParameterErrorException e) {
+            System.out.println("登录失败,失败原因:" + e.getMessage());
+            showMenu();
+        } catch (UserPrincipalNotFoundException e) {
+            System.out.println("登录失败,失败原因:" + e.getMessage());
+            showMenu();
+        } catch (UserExistException e) {
+            System.out.println("登录失败,失败原因:" + e.getMessage());
+            showMenu();
+        }
     }
 
     public void findAll() {
+//        List<Product> products = productService.findAll();
+//        if (!products.isEmpty()) {
+//            System.out.println("--------------------------------------");
+//            System.out.println("商品编号\t\t商品名称\t\t商品单价");
+//            for (Product product : products) {
+//                System.out.println(product.getId() + "\t\t" + product.getName() + "\t\t" + product.getPrice());
+//            }
+//            System.out.println("--------------------------------------");
+//        }
+        System.out.print("请输入查询第几页数据:");
+        String pageNo = sc.next();
+        System.out.print("请输入每页显示多少条数据:");
+        String pageSize = sc.next();
+        PageInfo<Product> pageProduct = productService.findPage(pageNo, pageSize);
+        List<Product> products = pageProduct.getList();
+        if (!products.isEmpty()) {
+            System.out.println("--------------------------------------");
+            System.out.println("商品编号\t\t商品名称\t\t商品单价");
+            for (Product product : products) {
+                System.out.println(product.getId() + "\t\t" + product.getName() + "\t\t" + product.getPrice());
+            }
+        }
+        System.out.println("当前页:" + pageNo + ",上一页:" + pageProduct.getPrePage() + ",下一页:" + pageProduct.getNextPage());
+        System.out.println("--------------------------------------");
 
+
+        showMenu();
     }
 }

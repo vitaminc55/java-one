@@ -5,6 +5,7 @@ import com.itany.shop.exception.DataAccessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +88,51 @@ public class JDBCTemplate<T> {
                 list.add(t);
             }
             return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataAccessException("数据访问异常");
+        } finally {
+            JDBCUtil.close(null, ps, rs);
+        }
+    }
+
+    /**
+     * 执行DML操作,用于保存数据的同时返回生成的主键值
+     * 此时生成PreparedStatement的方式与之前的不一样,可以定义一个接口由调用者做具体实现
+     * 返回的主键值可能只有一个,也可以存在多个,定义一个KeyHolder类用于接收所有保存的主键值
+     * @param psc
+     * @param keyHolder
+     */
+    public void update(PreparedStatementCreator psc, KeyHolder keyHolder) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = JDBCUtil.getConnection();
+            // 调用者在调用方法时做具体的实现
+            // 在实现的时候,会提供构建状态集时所需要的sql与参数
+            ps = psc.createPreparedStatement(conn);
+            ps.executeUpdate();
+
+            // 保存后数据库中自动生成对应的主键
+            // 获取生成的主键的值
+            rs = ps.getGeneratedKeys();
+            // 准备一个集合,用于存储所有自动生成的主键的值
+            List<Object> list = new ArrayList<>();
+
+            // 通过结果集元数据取获取生成的主键值
+            ResultSetMetaData rsmd = rs.getMetaData();
+            // 获取生成的列的总数
+            int columnCount = rsmd.getColumnCount();
+            if (rs.next()) {
+                // 在按行读取数据的时候,遍历所有列的值
+                // 将每一列的值存放到对应集合中
+                // 每一列对应一个主键值
+                for (int i = 1; i <= columnCount; i++) {
+                    list.add(rs.getObject(i));
+                }
+            }
+            keyHolder.setKeyList(list);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataAccessException("数据访问异常");

@@ -14,7 +14,7 @@ public class MD5Util {
     public static String md5(String password){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] b = md.digest();
+            byte[] b = md.digest(password.getBytes());
             // return new String(b);
             BASE64Encoder encoder = new BASE64Encoder();
             return encoder.encode(b);
