@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a52c0349-fcc0-499f-9bc9-64bb1dfe0040" name="Default Changelist" comment="6">
-      <change afterPath="$PROJECT_DIR$/corejava/src/com/itany/corejava/code08_常用类/日期类/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +40,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="copyright" />
@@ -82,17 +81,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
@@ -117,6 +105,10 @@
       <workItem from="1695774573573" duration="597000" />
       <workItem from="1696642948139" duration="2453000" />
       <workItem from="1696724965272" duration="598000" />
+      <workItem from="1696832565877" duration="79000" />
+      <workItem from="1697701186107" duration="325000" />
+      <workItem from="1698367363683" duration="55000" />
+      <workItem from="1700838198551" duration="87000" />
     </task>
     <task id="LOCAL-00001" summary="6">
       <created>1695115736890</created>
@@ -139,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695369129743</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="6">
+      <created>1696832620627</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696832620627</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
